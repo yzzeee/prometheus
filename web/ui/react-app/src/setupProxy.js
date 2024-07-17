@@ -2,10 +2,11 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 
 module.exports = function(app) {
   app.use(
-    '/api',
+    '/api/v1',
     createProxyMiddleware({
-      target: 'http://localhost:9090',
+      target: 'https://prometheus.example.com/api/v1',
       changeOrigin: true,
+      secure: false,
     })
   );
 };
